@@ -1,4 +1,4 @@
-package main
+package raccoon
 
 import (
 	"fmt"
@@ -11,7 +11,7 @@ import (
 // 需要通过命令 ` go build -ldflags "-X main.build=`git rev-parse HEAD`" ` 打包
 var build = "not set"
 
-func main() {
+func Run() {
 	fmt.Printf("Build: %s\n", build)
 	steps := *getConf()
 
