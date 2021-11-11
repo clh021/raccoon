@@ -24,7 +24,7 @@ make serve # 编译并运行
   -
     tag: web # 建议 tag 用英文，会作为环境变量的一部分传递给后面的执行步骤
     webroot: dist
-    addr: :0 # `:0` 表示自动寻找可用端口，无论是否自动，后续步骤都可通过 `APP_${upper(tag)}_URL` 得到服务地址
+    webaddr: :0 # `:0` 表示自动寻找可用端口，无论是否自动，后续步骤都可通过 `APP_${upper(tag)}_URL` 得到服务地址
   -
     tag: client
     exec: start.sh
