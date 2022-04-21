@@ -14,7 +14,7 @@ gitCID=$(shell git rev-parse HEAD)
 # gitTime=$(git log -1 --format=%at | xargs -I{} date -d @{} +%Y%m%d_%H%M%S)
 # 去除 符号信息 和 调试信息  -ldflags="-s -w"
 build: generate
-	@cd cmd;go build -ldflags "-s -w -X main.build=${gitTime}.${gitCID}" -o "../bin/raccoon"
+	@cd cmd;CGO_ENABLED=0 GOOS=linux go build -ldflags "-s -w -X main.build=${gitTime}.${gitCID}" -o "../bin/raccoon"
 	@echo "[OK] App binary was created!"
 
 buildcross: generate
