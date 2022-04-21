@@ -1,6 +1,8 @@
 .PHONY: generate test serve
 
 generate:
+	@export GO111MODULE=on
+	@export GOPROXY=https://goproxy.cn
 	@go mod tidy
 	@go generate ./...
 	@echo "[OK] Generate all completed!"
