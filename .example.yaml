@@ -1,0 +1,20 @@
+-
+  tag: background
+  exec: 
+    - nitr
+-
+  tag: web # 建议 tag 用英文，会作为环境变量的一部分传递给后面的执行步骤
+  exec:
+    - webServe # 是一个内置命令，当不存在此程序时会自动生效，存在时以程序为准
+    - "--web-root=dist" # 内置命令的第一个参数 web 服务根目录
+    - "--port=:0"   # 内置命令的第二个参数 port, `:0` 表示自动寻找可用端口，无论是否自动，后续步骤都可通过 `APP_${upper(tag)}_URL` 得到服务地址
+-
+  tag: client
+  exec: 
+    - start.sh
+-
+  tag: remote-command
+  exec:
+    - "ssh"
+    - "username@192.168.1.4"
+    - "if [ -d ~/project ];then echo 0;else echo 1;fi"
